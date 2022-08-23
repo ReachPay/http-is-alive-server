@@ -12,5 +12,5 @@ pub fn start_server(
     let mut http_server = MyHttpServer::new(SocketAddr::from(([0, 0, 0, 0], 8000)));
 
     http_server.add_middleware(Arc::new(IsAliveMiddleware::new(app_name, app_version)));
-    http_server.start(app_states);
+    http_server.start(app_states, my_logger::LOGGER.clone());
 }
